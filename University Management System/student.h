@@ -12,7 +12,7 @@ private:
 public:
 	void setLevel(int level);
 	int getLevel();
-	void setGPA(float gpa);
+	void setGPA(double gpa);
 	double getGPA();
 	void setDepartment(string department);
 	string getDepartment();

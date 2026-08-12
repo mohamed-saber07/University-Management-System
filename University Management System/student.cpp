@@ -10,7 +10,7 @@ int student::getLevel()
 	return Level;
 }
 
-void student::setGPA(float gpa)
+void student::setGPA(double gpa)
 {
 	GPA = gpa;
 }

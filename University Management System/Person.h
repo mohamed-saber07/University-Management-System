@@ -63,7 +63,7 @@ public:
 		setName(name);
 		setPhone(phone);
 	}
-
+	virtual ~Person() = default;
 	
 };
 

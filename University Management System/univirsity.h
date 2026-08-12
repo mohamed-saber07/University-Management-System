@@ -49,8 +49,13 @@ public:
 	}
 	
 	void add() {
+
 		int choice;
 		cin >> choice;
+		if (count >= 300) {
+			cout << "Cannot add more accounts. The system is full.\n";
+			return;
+		}
 		switch (choice) {
 		case 1:
 		  persons[count]= new student();
@@ -62,7 +67,8 @@ public:
 		 persons[count]=new Administrator();
 		 break;
 		default:
-			break;
+			cout << "Invalid choice\n";
+			return;
 		}
 		persons[count]->ReadData();
 		display::showAccountAdded();
@@ -70,43 +76,50 @@ public:
 	}
 	void show() {
 		int choice;
+		bool found = false;
 		cin >> choice;
+		if (count == 0) {
+			display::showAccountNotFound2();
+			return;
+		}
 		switch (choice) {
 		case 1:
-			for (int i = 0; i <= count - 1; i++) {
+			for (int i = 0; i < count ; i++) {
 				if (persons[i]->getType() == "student") {
 					persons[i]->printdata();
+					found = true;
 				}
-				else { display::showAccountNotFound2(); }
-			}
+ 			}
 			break;
 
 		case 2:
 			for (int i = 0; i < count; i++) {
 				if (persons[i]->getType() == "professor") {
 					persons[i]->printdata();
+					found = true;
 				}
-				else { display::showAccountNotFound2(); }
 			}
 			break;
 		case 3 :
 			for (int i = 0; i < count; i++) {
 				if (persons[i]->getType() == "Administrator") {
 					persons[i]->printdata();
+					found = true;
 				}
-				else { display::showAccountNotFound2(); }
-			}
+ 			}
 			break;
 		case 4: 
-				for (int i = 0; i <= count-1; i++) {
+				for (int i = 0; i < count; i++) {
 			     persons[i]->printdata();
 			}
 			break;
 		default:
-			display::showAccountNotFound2();
-			break;
+			cout << "Invalid choice\n";
+			return;
 		}
-
+		if (!found) {
+			display::showAccountNotFound2();
+		}
 	}
 	void search() {
 		int choice;
